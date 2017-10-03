@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TICKETINO Preisberechnung</title>
+	<script type="text/javascript" src="lib/knockout-3.4.2.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<h1>TICKETINO Preisberechnung</h1>
+	<p>Dieser Preisrechner hilft Ihnen dabei, herauszufinden, was der Vorverkauf über TICKETINO für Sie kostet.</p>
+	
+	<h2>In welcher Währung ist der Ticketpreis?</h2>
+	<div class="input-grp">
+	    <input type="radio" class="radio" name="currency" value="CHF" id="CHF" data-bind="checked: currency" />
+	    <label for="CHF">Schweizer Franken (CHF)</label>
+	</div>
+	<div class="input-grp">
+		<input type="radio" class="radio" name="currency" value="EUR" id="EUR" data-bind="checked: currency" />
+	    <label for="EUR">Euro (EUR)</label>
+	</div>
+
+	<h2>Wer trägt die Gebühr?</h2>
+	<div class="input-grp">
+		<input type="radio" class="radio" name="fee-paid-by" value="organizer" id="organizer" data-bind="checked: feePaidBy" />
+	    <label for="organizer">Veranstalter</label>
+	</div>
+	<div class="input-grp">
+	    <input type="radio" class="radio" name="fee-paid-by" value="ticketbuyer" id="ticketbuyer" data-bind="checked: feePaidBy" />
+	    <label for="ticketbuyer">Ticketkäufer</label>
+	</div>
+
+	<h2>Wie viel kostet ein Ticket?</h2>
+	<input type="text" placeholder="0.00"  name="ticketprice" id="ticketprice" data-bind="value: ticketprice">
+	
+	<h2>Resultat:</h2>
+	<p>Der Ticketkäufer bezahlt <span class="result" data-bind="text: priceForBuyer">CHF 0.00</span></p>
+	<p>Sie erhalten <span class="result" data-bind="text: paidToOrganizer">CHF 0.00</span></p>
+	<p>Die Gebühr beträgt <span class="result" data-bind="text: fee">CHF 0.00</span></p>
+
+	<!-- Init knockout viewmodel -->
+	<script type="text/javascript">
+		var viewModel = new AppViewModel({
+			currency: 'CHF',
+			ticketprice: 10.00,
+			feePaidBy: 'organizer'
+		});
+
+		//ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>
