@@ -177,7 +177,6 @@ describe('Flat ticketing fee', () => {
 
 });
 
-// TODO: Total Fee
 describe('Total ticketing fee', () => {
 
 	it('Contains all fees and VAT for free tickets', () => {
